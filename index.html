@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neubrutal Login</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #a8d5e5;
+        }
+        .neu-brutal {
+            box-shadow: 8px 8px 0px #000000;
+            border: 3px solid #000000;
+            transition: all 0.2s ease;
+        }
+        .neu-brutal:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px #000000;
+        }
+        .neu-brutal:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0px #000000;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white neu-brutal p-8 rounded-lg">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">Welcome!</h1>
+            <p class="text-gray-600">Sign in to continue</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-sm font-bold mb-2" for="email">Email</label>
+                <input type="email" id="email" class="w-full p-3 neu-brutal rounded" required>
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-2" for="password">Password</label>
+                <input type="password" id="password" class="w-full p-3 neu-brutal rounded" required>
+            </div>
+            <button type="submit" class="w-full bg-black text-white p-3 neu-brutal rounded font-bold">
+                Login
+            </button>
+        </form>
+
+        <div class="mt-6 space-y-4">
+            <button class="w-full bg-white p-3 neu-brutal rounded font-bold flex items-center justify-center gap-2">
+                <i class="bi bi-google"></i>
+                Continue with Google
+            </button>
+            <button class="w-full bg-[#1877F2] text-white p-3 neu-brutal rounded font-bold flex items-center justify-center gap-2">
+                <i class="bi bi-facebook"></i>
+                Continue with Facebook
+            </button>
+        </div>
+
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">Don't have an account? 
+                <button id="switchToSignup" class="font-bold underline">Sign up</button>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const switchToSignup = document.getElementById('switchToSignup');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Here you would typically handle the login logic
+            console.log('Login attempted with:', { email, password });
+            alert('Login functionality would be implemented here!');
+        });
+
+        switchToSignup.addEventListener('click', () => {
+            const title = document.querySelector('h1');
+            const subtitle = document.querySelector('p');
+            const submitButton = document.querySelector('button[type="submit"]');
+            const switchButton = document.getElementById('switchToSignup');
+
+            if (title.textContent === 'Welcome!') {
+                title.textContent = 'Create Account';
+                subtitle.textContent = 'Sign up to get started';
+                submitButton.textContent = 'Sign Up';
+                switchButton.textContent = 'Login';
+            } else {
+                title.textContent = 'Welcome!';
+                subtitle.textContent = 'Sign in to continue';
+                submitButton.textContent = 'Login';
+                switchButton.textContent = 'Sign up';
+            }
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
